@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<script>
+
+var MondayArray = ["23","24","25","27","28","29","30","31","85","91","100","103","104","105","107"];
+var intMondayArray = [] //storing int version of MondayArray array
+
+//converting to ints and sorting in ascending order
+intMondayArray = MondayArray.map(Number)
+intMondayArray = intMondayArray.sort(function(a, b){return a-b});
+
+console.log("Int version Array: " + intMondayArray)
+
+var finalArr = []
+var j = 0
+var x = 0
+
+while (j < intMondayArray.length)
+{	
+	j = 0
+	x = 0
+	while (Math.abs(intMondayArray[x] - intMondayArray[x+1]) == 1)
+	{
+		// console.log(intMondayArray[x] + "-" + intMondayArray[x+1])
+		x++
+	}
+	finalArr.push(intMondayArray.splice(0, x+1))
+}
+
+console.log(finalArr)
+
+function myFunction() {
+	for(var i = 0; i < finalArr.length; i++){
+		document.getElementById("array").innerHTML += "Array " + (i + 1).toString() + ": "
+    	for(var j = 0; j < finalArr[i].length; j++){
+
+        	document.getElementById("array").innerHTML += (finalArr[i][j]) + " ";
+    	}
+    	document.getElementById("array").innerHTML += "</br>"
+	}
+}
+
+</script>
+
+<body onload="myFunction()">
+<div id="container">
+	<p id=array></p>
+</div>
+
+
+</body>
+
+</html>
